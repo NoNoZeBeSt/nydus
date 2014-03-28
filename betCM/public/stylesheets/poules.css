@@ -1,0 +1,11 @@
+.left{
+display:inline-block;
+width:150px;
+text-align:right;
+}
+.right{
+display:inline-block;
+width:150px;
+text-align:left;
+}
+

@@ -1,0 +1,17 @@
+doctype html
+html(lang="en")
+  head
+    title=dateTest
+    link(rel='stylesheet', href='/stylesheets/poules.css')
+  body
+    #content
+        p
+        - for match in matches
+            p 
+                span(class='left')
+                    =match.eq1
+                input(type='radio',name='match_'+match.id,value='1')
+                input(type='radio',name='match_'+match.id,value='N')
+                input(type='radio',name='match_'+match.id,value='2')
+                span(class='right')
+                    =match.eq2
