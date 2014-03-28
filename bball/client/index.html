@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html ng-app='bball'>
+<head>
+<meta charset="utf-8"> 
+<link rel="stylesheet" href="bootstrap.min.css">
+<style>
+
+</style>
+</head>
+<body ng-controller='ctrl'>
+<h1>{{chosenDate|dd}}</h1>
+<select ng-model='d' ng-options='f for f in alldates' ng-change='loadDate(d)'></select>
+<br/>
+<input type='text' ng-model='newP.name' placeholder="New player's name" /><input type='button' value='Ajouter' ng-click='newPlayer(newP.name, chosenDate)' />
+<table class="table table-striped">
+<thead>
+<tr><th>Joueur</th><th>2pts</th><th>3pts</th><th>Rebonds</th><th>Passes</th><th>Interceptions</th><th>fautes</th><th>Minutes Jouées</th></tr>
+</thead>
+<tbody ng-repeat='fu in players'>
+	<tr stat pl='fu'>
+	</tr>
+</tbody>
+</table>
+<br/>
+<p>Last update : {{lastUpdate | date:'HH:mm:ss'}}</p>
+
+
+<script type="text/ng-template" id="stat.html">
+	<td>{{pl.player}}</td>
+	<td>{{pl.two_scored}}/{{pl.two_taken}} ({{((pl.two_scored/pl.two_taken)*100)| number:2}}%) <input type='button' value='Score' ng-click='twoPoints(pl,true)' class="btn btn-default"/><input type='button' value='Missed' ng-click='twoPoints(pl,false)' class="btn btn-default"/><br/></td>
+	<td>{{pl.three_scored}}/{{pl.three_taken}} ({{((pl.three_scored/pl.three_taken)*100)| number:2}}%) <input type='button' value='Score' ng-click='threePoints(pl,true)' class="btn btn-default"/><input type='button' value='Missed' ng-click='threePoints(pl,false)' class="btn btn-default"/><br/></td>
+	<td>{{pl.rebounds}} <input type='button' value='+1' ng-click='incr(pl,"rebounds")' class="btn btn-default"/><input type='button' value='-1' ng-click='decr(pl,"rebounds")' class="btn btn-default"/><br/></td>
+	<td>{{pl.passes}} <input type='button' value='+1' ng-click='incr(pl,"passes")' class="btn btn-default"/><input type='button' value='-1' ng-click='decr(pl,"passes")' class="btn btn-default"/><br/></td>
+	<td>{{pl.interceptions}} <input type='button' value='+1' ng-click='incr(pl,"interceptions")' class="btn btn-default"/><input type='button' value='-1' ng-click='decr(pl,"interceptions")' class="btn btn-default"/><br/></td>
+	<td>{{pl.fouls}} <input type='button' value='+1' ng-click='incr(pl,"fouls")' class="btn btn-default"/><input type='button' value='-1' ng-click='decr(pl,"fouls")' class="btn btn-default"/><br/></td>
+	<td>{{pl.time_played}} <input type='button' value='Match' ng-click='pl.time_played=40' class="btn btn-default" /><input type='button' value='Mi-temps' ng-click='pl.time_played=20'  class="btn btn-default"/><input type='button' value='Quart temps' ng-click='pl.time_played=10' class="btn btn-default"/><input type='button' value='3 Quart temps' ng-click='pl.time_played=30' class="btn btn-default" /></td>
+</script>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="bootstrap.min.js"></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js'></script>
+<script src='bball_client_v2.js'></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "bball_server",
+  "version": "0.0.0",
+  "description": "server part for the bball scoring site",
+  "main": "bball.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bball"
+  ],
+  "author": "NoNoZeBeSt",
+  "license": "BSD"
+}
