@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr" ng-app='tt'>
+  <head>
+    <meta charset="utf-8">
+    <title>Are you serious ?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+  <!-- Le styles -->
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+	<link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+	  input.ng-invalid { border: 1px solid red; }
+	  input.ng-valid { border: 1px solid green; }
+    </style>
+    <link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="/bootstrap/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/bootstrap/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/bootstrap/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/bootstrap/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="/bootstrap/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="/bootstrap/ico/favicon.png">
+
+
+</head>
+<body ng-controller='smokeCtrl'>
+<div class="row-fluid">
+<div class="span3 offset1">
+<form name="form" class="css-form" novalidate>
+<table>
+<tr><td><label for='paquet'>Prix du paquet : </label></td><td><input ng-change='calcul(form.$valid)' type='number' float name='paquet' ng-model='paquet' /></td></tr>
+<tr><td><label for='freq'>Nombre de paquets par mois : </label></td><td><input ng-change='calcul(form.$valid)' ng-pattern='notnull' type='number' integer name='freq' ng-model='freq' /></td></tr>
+<tr><td><label for='date'>Date approximative de début : </label></td><td><input ng-change='calcul(form.$valid)' required ng-pattern='pat' type='date' datepicker name='date' ng-model='debut' /></td></tr>
+<tr><td colspan=2 style="{text-align:center}"><input type='button' ng-click='calcul(form.$valid)' value='Do the Maths !!' class='btn' ng-disabled='form.$invalid' /></td></tr>
+</table>
+
+</form>
+
+</div>
+<div class="span4 offset2" ng-hide='!affiche'>
+<p></p>
+<p>Vous avez dépensé : <b>{{total | currency:"&euro;"}}</b> depuis le <b>{{debut|date:'medium'}}</b></p>
+<p>Vous dépensez <b>{{monthTotal | currency:"&euro;"}}</b> par mois, l'équivalent de <b>{{nbMonthEquiv | number:0}} {{monthEquiv}}</b></p> 
+<p>Dans un paquet de 20, chaque cigarette vous coûte <b>{{prixUnitaire | currency:"&euro;"}}</b></p>
+<p>Depuis le <b>{{debut|date:'medium'}}</b>, vous auriez pu avoir <b>{{nbTotalEquiv | number:0}} {{totalEquiv}}</b></p>
+<p>Au total, vous avez fumé <b>{{totalUnit|number:0}}</b> cigarettes</p>
+
+</div>
+</div>
+
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/bootstrap/js/jquery.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	
+    <script src="/bootstrap/js/bootstrap-transition.js"></script>
+    <script src="/bootstrap/js/bootstrap-alert.js"></script>
+    <script src="/bootstrap/js/bootstrap-modal.js"></script>
+    <script src="/bootstrap/js/bootstrap-dropdown.js"></script>
+    <script src="/bootstrap/js/bootstrap-scrollspy.js"></script>
+    <script src="/bootstrap/js/bootstrap-tab.js"></script>
+    <script src="/bootstrap/js/bootstrap-tooltip.js"></script>
+    <script src="/bootstrap/js/bootstrap-popover.js"></script>
+    <script src="/bootstrap/js/bootstrap-button.js"></script>
+    <script src="/bootstrap/js/bootstrap-collapse.js"></script>
+    <script src="/bootstrap/js/bootstrap-carousel.js"></script>
+    <script src="/bootstrap/js/bootstrap-typeahead.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+<script>
+var tt=angular.module('tt',[]);
+tt.controller('smokeCtrl', function($scope){
+	$scope.logMe=function(obj){
+		console.log(obj);
+	}
+	
+	$scope.pat=/^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/
+	$scope.notnull=/(^[1-9]$|^[1-9][0-9]*$)/
+	$scope.paquet=0;
+	$scope.freq=0;
+	$scope.affiche=false;
+	var dd=new Date().getTime();
+	console.log(dd);
+	m=""
+	console.log(m)
+	$scope.debut=m;
+	$scope.duree=0;
+	$scope.total=$scope.paquet*$scope.freq*$scope.duree;
+	$scope.monthTotal=$scope.paquet*$scope.freq;
+	$scope.nbTotalEquiv=5;
+	$scope.nbMonthEquiv=4;
+	$scope.monthEquiv="kebab";
+	$scope.totalEquiv="yachts";
+	$scope.totalUnit=$scope.freq*20*$scope.duree
+	$scope.prixUnitaire=$scope.paquet/20;
+	$scope.equivalents=	{
+	"timbre":0.63,
+	"litre de Coca-Cola":1.40,
+	"kebab":6,
+	"prostituée":50,
+	"magnum de champagne":100,
+	"iPad":450,
+	"loyer":750,
+	"SMIC":1120,
+	"salaire d'ingénieur":2500,
+	"voiture d'occasion":5000,
+	"voiture neuve":15000,
+	"porsche 911":91935,
+	"appartement":250000,
+	"yacht":1125000,
+	"ile privée":3000000
+	};
+	$scope.plur={
+	"timbre":["Timbre","Timbres","Timbres"],
+	"litre de Coca-Cola":["Litre de Coca-Cola","Litres de Coca-Cola","Litres de Coca-Cola"],
+	"kebab":["Kebab","Kebabs","Kebabs"],
+	"prostituée":["Prostituée","Prostituées","Prostituées"],
+	"magnum de champagne":["Magnum de champagne","Magnums de champagne","Magnums de champagne"],
+	"iPad":["iPad","iPads","iPads"],
+	"loyer":["Loyer","Loyers","Loyers"],
+	"SMIC":["SMIC","SMIC","SMIC"],
+	"salaire d'ingénieur":["Salaire d'ingénieur","Salaires d'ingénieur","Salaires d'ingénieur"],
+	"voiture d'occasion":["Voiture d'occasion","Voitures d'occasion","Voitures d'occasion"],
+	"voiture neuve":["Voiture neuve","Voitures neuves","Voitures neuves"],
+	"porsche 911":["Porsche 911","Porsche 911","Porsche 911"],
+	"appartement":["Appartement","Appartements","Appartements"],
+	"yacht":["Yacht","Yachts","Yachts",],
+	"ile privée":["Île privée","Îles privées","Îles privées"]
+	};
+	
+	
+	$scope.calcul=function(valid){
+		if(!valid)
+			return false;
+		$scope.affiche=true;
+		console.log($scope.paquet, $scope.freq, $scope.debut);
+		re=/\//g;
+		var tmpDate=$scope.debut.replace(re,",").split(",");
+		var enteredDate=new Date(tmpDate[2],tmpDate[1]-1,tmpDate[0]).getTime();
+		console.log(enteredDate, dd, dd-enteredDate, (dd-enteredDate)/2635200000);
+		$scope.prixUnitaire=$scope.paquet/20;
+		$scope.duree=(dd-enteredDate)/2635200000;
+		$scope.total=$scope.paquet*$scope.freq*$scope.duree;
+		$scope.monthTotal=$scope.paquet*$scope.freq;
+		$scope.totalUnit=$scope.freq*20*$scope.duree
+		$scope.nbTotalEquiv=3;
+		$scope.nbMonthEquiv=3;
+		$scope.monthEquiv="fois rien";
+		$scope.totalEquiv="fois rien";
+		previous=""
+		console.log($scope.equivalents);
+		$scope.calculedEquiv=Array();
+		tot=0;
+		mth=0;
+		var minMth;
+		var minTot;
+		for(var i in $scope.equivalents)
+		{
+			$scope.calculedEquiv[i]={"type":$scope.plur[i],"total":$scope.total/$scope.equivalents[i],"monthTotal":$scope.monthTotal/$scope.equivalents[i]};
+			if($scope.total/$scope.equivalents[i]>tot && $scope.total/$scope.equivalents[i]>1)
+				minTot=i
+			if($scope.monthTotal/$scope.equivalents[i]>mth && $scope.monthTotal/$scope.equivalents[i]>1)
+				minMth=i
+		}
+
+		for( var j in $scope.calculedEquiv)
+		{
+		//console.log(minMth,$scope.calculedEquiv[minMth]["monthTotal"],$scope.calculedEquiv[j]["monthTotal"],$scope.calculedEquiv[j]["total"],$scope.calculedEquiv[j]["monthTotal"]>1, $scope.calculedEquiv[j]["monthTotal"]<$scope.calculedEquiv[minMth]["monthTotal"])
+			if($scope.calculedEquiv[j]["monthTotal"]>1 && $scope.calculedEquiv[j]["monthTotal"]<$scope.calculedEquiv[minMth]["monthTotal"])
+				minMth=j
+			if($scope.calculedEquiv[j]["total"]>1 && $scope.calculedEquiv[j]["total"]<$scope.calculedEquiv[minMth]["total"])
+				minTot=j
+		}
+		$scope.nbMonthEquiv=$scope.calculedEquiv[minMth]["monthTotal"]
+		$scope.monthEquiv=$scope.calculedEquiv[minMth]["type"][0]
+		$scope.nbTotalEquiv=$scope.calculedEquiv[minTot]["total"]
+		$scope.totalEquiv=$scope.calculedEquiv[minTot]["type"][0]
+		if($scope.nbMonthEquiv>=1.5)
+			$scope.monthEquiv=$scope.calculedEquiv[minMth]["type"][1]
+		if($scope.nbTotalEquiv>=1.5)
+			$scope.totalEquiv=$scope.calculedEquiv[minTot]["type"][1]
+	}
+	
+	
+});
+
+tt.directive('modif',function(){
+	return	{
+	restrict:'A',
+	scope:true,
+	link: function(scope, element,attrs){
+		element.bind('change', function(){
+				scope.calcul();
+			})
+		}
+	}
+});
+
+tt.directive('datepicker', function(){
+	      
+	return {
+	require: 'ngModel',
+	link : function(scope,element,attrs, ngModel){
+		element.datepicker({
+				onSelect: function(dateText) {
+				  scope.$apply(function() {
+					ngModel.$setViewValue(dateText);
+				  });
+				},
+				dateFormat: "dd/mm/yy"
+			  });	
+		}
+	}
+});
+</script>
+</body>
+</html>
+
