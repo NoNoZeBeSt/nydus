@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="en" ng-app='prezApp'>
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>AngularJS - A nice HTML Presentation, with reveal.js Framework</title>
+
+		<meta name="description" content="AngularJS, the magic, and some platypi">
+		<meta name="author" content="DotDotDot">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+    <section>&nbsp;<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/dotdotdot/images/48864/angular_logo.png" class="absolute-element" style="position: absolute; max-height: none; max-width: none; width: 186px; height: 197px; z-index: 4; left: 364px; top: 300px;">
+        <h2 class="fragment absolute-element" style="position: absolute; width: 762px; height: 74px; z-index: 4; left: 100px; top: 193px;" data-fragment-index="0">
+    <span style="color: rgb(220, 220, 220); font-family: monospace;">Angular Js magic</span>
+</h2>
+
+
+</section>
+        <section>
+            <section>
+                <h2>Comment ça marche ?</h2>
+<div>
+                <br>
+                </div>
+<p>C'est là que commence la magie, pour faire fonctionner AngularJS, il suffit d'inclure le script (disponible sur le CDN de Google, pas besoin de le télécharger) et de déclarer quelque part dans une balise html l'attribut '<span style="color: rgb(220, 220, 220); font-family: monospace; background-color: inherit; text-align: left; white-space: pre-wrap;">ng-app</span>
+                <span>'</span>
+            </p>
+        </section>
+        <section>
+<h2>Démonstration :</h2>
+<div>
+    <br>
+</div>
+<div ng-non-bindable>
+<pre>&lt;!doctype html&gt;<br>&lt;html ng-app="optionalModuleName"&gt;<br>&nbsp; &lt;body&gt;<br>&nbsp; &nbsp; I can add: {{ 1+2 }}.<br>&nbsp; &nbsp; &lt;script src="angular.js"&gt;&lt;/script&gt;<br>&nbsp; &lt;/body&gt;<br>&lt;/html&gt;</pre>
+</div>
+<p><font style="font-size: 24px;"><br></font></p>
+<div style="text-align: left;"><font style="font-size: 24px;"><span style="font-size: 24px;">Ce qui va afficher :</span></font></div>
+<p></p>
+<p><font style="font-size: 24px;"><br></font></p>
+
+I can add: <span ng-bind='1+2'></span>
+
+</section><section><p class="absolute-element" style="position: absolute; width: 668px; height: 114px; z-index: 4; left: 125px; top: 273px;"><font style="font-size: 54px;">O_o !! Magique !&nbsp;<br>On peut faire des additions !</font></p></section></section><section><section><h2>Et sinon, ça sert à quoi ?</h2>
+<blockquote style="text-align: center; margin: 0px 0px 0px 40px; border: medium none; padding: 0px; width: 867px; height: 163px; max-height: none; max-width: none; position: absolute; z-index: 4; left: 15px; top: 164px;" class="absolute-element">
+    <p>
+    <font style="font-size: 32px;">AngularJS est prévu pour "améliorer" le langage HTML dans le cas des webapps, les applications sur une seule page, permettant de créer, éditer, modifier des données (architecture CRUD).&nbsp;</font>
+</p>&nbsp;</blockquote>
+<blockquote style="text-align: center; margin: 0px 0px 0px 40px; border: medium none; padding: 0px; width: 867px; height: 163px; max-height: none; max-width: none; position: absolute; z-index: 4; left: 14px; top: 348px;" class="absolute-element">
+<span style="font-size: 36px; font-style: italic; font-variant: normal;">Heureusement, le framework ne se limite pas à ça, et propose un grand nombre d'outils se révélant très utiles en toute situation</span><br>
+</blockquote>
+</section><section><h2>Ah ouais ?</h2>
+<div><br></div>
+<div>La première chose qui vient à l'esprit pour montrer la puissance d'AngularJS, c'est la facilité à modifier et afficher un contenu en direct sur une page :&nbsp;</div>
+<div>Petit point rapide : pour demander à AngularJS de lier des données du modèle dans la vue, on utilise les double accolades {{}}</div>
+<div><br></div>
+<div ng-non-bindable>&lt;input type='text' ng-model='first.test' /&gt; Hello {{first.test}} !
+</div>
+<div><input type='text' ng-model='first.test' /> Hello {{first.test}} !</div></section><section><h2>Comment ça marche ?</h2>
+<div><br></div>
+<div>AngularJS fait ce qu'on appelle un binding bilatéral des données. Pour expliquer cela plus facilement, reprenons les illustrations proposés dans la documentation en ligne&nbsp;</div></section><section><h2>One way data-binding</h2>
+<div>(Association des données de manière unilatérale)</div>
+<div>
+    <br>
+</div>
+<div class="absolute-element" style="position: absolute; width: 422px; height: 299px; z-index: 4; left: 494px; top: 202px; max-height: none; max-width: none;"><input type='text' name='oneway'/><br/> Hello world !</div>
+<div><br></div>
+<div class="absolute-element" style="position: absolute; width: 936px; height: 138px; z-index: 4; left: 10px; top: 508px;">Les données du modèle sont récupérées une unique fois à la création de la vue, mais leur changement ne sera pas répercuté automatiquement</div>
+<div class="absolute-element" style="position: absolute; width: 448px; height: 302px; z-index: 4; left: 23px; top: 200px;">
+    <img src="http://docs.angularjs.org/img/One_Way_Data_Binding.png" style=""><br>
+</div>
+</section><section><h2>Two-way data-binding</h2>
+<div>(Ce que fait AngularJS)</div>
+<div class="absolute-element" style="position: absolute; width: 432px; height: 330px; z-index: 4; left: 499px; top: 194px; max-height: none; max-width: none;"><input type='text' ng-model='third.test' ng-init="third.test='World'" /><br/> Hello {{third.test}} !</div>
+<div class="absolute-element" style="position: absolute; width: 936px; height: 138px; z-index: 4; left: 6px; top: 527px;"><font style="font-size: 24px;">Les données du modèle sont vérifiées en continu, et chaque modification va entraîner une réaction du côté de la vue, permettant l'affichage en direct. La vue reflète ainsi à chaque instant le modèle, de manière cohérente</font></div>
+<div class="absolute-element" style="position: absolute; width: 448px; height: 337px; z-index: 4; left: 30px; top: 193px;">
+<img src="http://docs.angularjs.org/img/Two_Way_Data_Binding.png" style=""><br>
+</div></section></section><section><section><h2>Youpi ! On affiche du texte</h2>
+<div>Quelle révolution dans le monde de la programmation !</div>
+<div><br></div>
+<div>Heureusement, c'est loin d'être fini !</div>
+<div><br></div>
+<div>On vient de voir la relation entre la vue et le modèle, mais, comme tout bon framework MVC, AngularJS possède aussi des controlleurs !&nbsp;</div>
+<div><br></div></section><section><h2>The controller !</h2>
+<div><br></div>
+<div class="absolute-element" style="position: absolute; width: 727px; height: 46px; z-index: 4; left: 108px; top: 114px;">A quoi sert donc le controller dans AngularJS ?</div>
+<div>Il est utilisé principalement pour deux choses :</div>
+<div class="absolute-element" style="position: absolute; width: 656px; height: 138px; z-index: 4; left: 145px; top: 225px;">
+<ul>
+<li>
+<span style="text-align: center;">Initialiser des objets</span><br>
+</li>
+<li>
+<span style="text-align: center;">Ajouter un comportement à ces objets</span><br>
+</li>
+</ul>
+<div><br></div>
+</div>
+<div class="absolute-element" style="position: absolute; width: 361px; height: 46px; z-index: 4; left: 308px; top: 331px;">Comment on l'utilise ?&nbsp;</div>
+<div class="absolute-element" style="position: absolute; width: 936px; height: 138px; z-index: 4; left: 13px; top: 373px;">Le controller est une fonction, donc il suffit de la déclarer comme telle. L'unique argument qui lui sera nécessaire, c'est le $scope, mais nous y reviendrons plus tard&nbsp;</div>
+<div class="absolute-element" style="position: absolute; width: 936px; height: 138px; z-index: 4; left: 23px; top: 527px; max-height: none; max-width: none;">Ensuite, une fois la fonction créée, il suffit de la déclarer sur le tag html où elle sera appliquée, avec l'attribut ng-controller : <font color="#4a86e8">&lt;div ng-controller='monCtrl'&gt;</font>
+</div></section><section><h2>Petit exemple ?</h2>
+<div><br></div>
+<div>
+<pre>
+<code ng-non-bindable>
+&lt;script&gt;
+function testCtrl($scope)
+{
+	$scope.value=42;
+	$scope.methode=function()
+	{
+		$scope.value*=2;
+	}
+}
+&lt;/script&gt;
+&lt;span ng-controller='testCtrl' ng-bind='value' ng-click='methode()'&gt;&lt;/span&gt;
+</code>
+</pre>
+<script>
+function testCtrl($scope)
+{
+	$scope.value=42;
+	$scope.methode=function()
+	{
+		$scope.value*=2;
+	}
+}
+</script>
+<span ng-controller='testCtrl' ng-bind='value' ng-click='methode()'></span>
+</div>
+<div><br></div></section></section><section><section><h2>$scope</h2>
+<div>Un petit détour pour parler du $scope, qu'on a introduit dans le controller. Le scope, c'est un objet qui fait référence à la fois au modèle et au comportement d'un composant de l'application. Les divers scopes d'une page sont organisés de manière hiérarchisée, reprenant la structure du DOM. C'est le scope qui va permettre de surveiller des expressions, et qui va permettre de propager des événements aux autres scopes</div>
+<div>
+<span>Lors de la création de l'application, AngularJS va définir un $rootScope, dont vont dériver tous les autres scopes qui seront créés</span><br>
+</div></section><section><h2>It's a trap !</h2>
+<div>Bien entendu, des $scopes différents entraînent parfois beaucoup de pièges, surtout lorsqu'ils sont ajoutés implicitement par le framework. Il est nécessaire de bien comprendre et appréhender la portée des données que l'on manipule. AngularJS n'est pas très explicite au niveau des erreurs (si on cherche à accéder à un objet inexistant, il renverra un contenu nul, mais pas d'erreur) cependant, les $scope sont assez faciles à différencier, ils possèdent chacun un $id, qui se repère facilement avec un console.log($scope)</div></section><section><h2>STFU ! TL;DR !&nbsp;</h2>
+<div>Plus simplement voici un exemple tout frais en provenance directe de la documentation officielle :</div>
+<div><br></div>
+<div><br></div>
+<div>Example 6 :&nbsp;<a href="http://docs.angularjs.org/guide/scope">http://docs.angularjs.org/guide/scope</a>
+</div></section></section><section><section><h2>Petit résumé :</h2>
+<div><br></div>
+<div>Pour le moment, on a vu comment initialiser, modifier et afficher des données simples, comme du texte. Fort heureusement, on peut faire beaucoup plus avec AngularJS, sans avoir beaucoup de connaissances supplémentaires.&nbsp;</div>
+<div>En effet, les gentils développeurs ont pensé à ajouter des fonctions faciles d'accès permettant d'automatiser et d'accélérer certains comportement récurrents</div>
+<div>Petit tour d'horizon&nbsp;</div></section><section><h2>Ng-repeat</h2>
+<div>Il est souvent nécessaire, dans une web app d'afficher une liste de propriétés, quelle que soit la forme. C'est rarement très difficile de créer la liste, que ce soit en php côté serveur ou en javascript ensuite, mais il s'avère souvent long et fastidieux de la mettre à jour, de l'ordonner etc.... AngularJs propose tout ça nativement, sans rien d'autre à faire :)</div>
+<div>Supposons qu'on dispose d'une liste de personnes avec un nom, un age et une adresse e-mail. La partie concernant la récupération de cette liste est volontairement passée sous silence</div></section><section><h2>NG-repeat</h2>
+<div>
+    <br>
+</div>
+<div>Disons que notre liste est définie sous le nom "annuaire" dans notre controller</div>
+<div>
+    <span>
+        <br></span>
+</div>
+<div>
+    <span>
+        <br></span>
+</div>
+<div>
+    <span>
+        <br></span>
+</div>
+<div>
+    <span>
+        <br></span>
+</div>
+<div>
+    <span>On va pouvoir l'afficher très facilement avec ng-repeat :</span>
+</div>
+<div>
+    <span>
+        <br></span>
+</div>
+<div class="absolute-element" style="position: absolute; width: 1059px; height: 191px; z-index: 4; left: -30px; top: 497px; max-height: none; max-width: none;">
+    <span>
+        <div ng-non-bindable><pre><code>&lt;table ng-controller='testCtrl'&gt;
+&lt;tr ng-repeat='personne in annuaire'&gt;
+&lt;td&gt;{{personne.nom}}&lt;/td&gt;&lt;td&gt;{{personne.age}}&lt;/td&gt;&lt;td&gt;{{personne.mail}}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;</code>        </pre>
+</div>
+        </span>
+    </div>
+    <div class="absolute-element" style="position: absolute; width: 512px; height: 155px; z-index: 4; left: 218px; top: 264px;">
+<pre ng-non-bindable><code>function theCtrl($scope){
+$scope.annuaire={...plein de données...};
+}<br><br></code>    </pre>
+</div>
+</section>
+</section>
+<section>
+    <section>
+        <h2>Les filtres</h2>
+<div>
+        <br>
+        </div>
+<div>Il est impossible de parler de ng-repeat sans évoquer les filtres. AngularJS permet en effet de filtrer, formater, et ordonner les données, que ce soit grâce aux outils de base du framework, ou avec ses propres fonctions.</div>
+<div>Il est possible avec AngularJs d'appliquer des filtres sur à peu près toutes les données, le plus rapide et le plus utile restant au moment du binding</div>
+<div>La syntaxe à utiliser est très similaire aux pipes ( | ) sous Unix, et permet, de la même manière, d'enchaîner plusieurs filtres&nbsp;</div>
+    </section>
+    <section>
+        <h2>Filtres pré-définis : OrderBy</h2>
+<div>
+        <br>
+    </div>
+<div>L'un des filtres les plus intéressants est OrderBy, qui comme son nom l'indique, permet d'ordonner les données en comparant les valeurs de chacune d'entre-elles</div>
+<div>Il permet, en reprenant l'exemple précédent d'afficher notre liste de noms par ordre alphabétique :</div>
+<div>
+<pre><code> &lt;tr ng-repeat="personne in annuaire | orderBy:'nom'"&gt;</span></code></pre>
+</div>
+<div>Et pour l'inverse :&nbsp;</div>
+<pre><code> &lt;tr ng-repeat="personne in annuaire | orderBy:'-nom'"&gt;</code></pre>
+</section>
+<section>
+    <h2>Filter</h2>
+<div>
+    <br>
+</div>
+<div>Une fois les données affichées, il est parfois utile d'en filtrer une partie, c'est à ça que sert le filtre du nom de 'filter', qui permet de spécifier un terme de recherche</div>
+<div>Bien entendu, cette recherche peut provenir d'un modèle créé dans la page elle-même, créant ainsi un mini moteur de recherche en 2 lignes de code :</div>
+
+<div>
+<pre><code>
+	$scope.annuaire=[
+	{"nom":"Obi","age":1254,"mail":"la@force.com", "prix":164, "date":"2013-04-03"},
+	{"nom":"Wan","age":38,"mail":"une@adresse.fr", "prix":12.56, "date":"1854-12-25"},
+	{"nom":"Ken" ,"age":67,"mail":"o@sef.org", "prix":0.25, "date":"2015-02-23"}];
+</code></pre>
+
+
+<script>
+function filterCtrl($scope)
+{
+	$scope.annuaire=[
+	{"nom":"Obi","age":1254,"mail":"la@force.com", "prix":164, "date":"2013-04-03"},
+	{"nom":"Wan","age":38,"mail":"une@adresse.fr", "prix":12.56, "date":"1854-12-25"},
+	{"nom":"Ken" ,"age":67,"mail":"o@sef.org", "prix":0.25, "date":"2015-02-23"}
+	
+	];
+
+}
+
+</script>
+Recherche : <input type='text' ng-model='recherche' />
+<table ng-controller='filterCtrl'>
+	<tr><th>Nom</th><th>Age</th><th>Mail</th><th>Prix</th><th>Date</th></tr>
+	<tr ng-repeat='pers in annuaire | filter:recherche'>
+		<td>{{pers.nom}}</td><td>{{pers.age}}</td><td>{{pers.mail}}</td><td>{{pers.prix}}</td><td>{{pers.date}}</td>
+	</tr>
+</table>
+</div>
+<div>
+<br>
+</div>
+</section>
+<section>
+    <h2>Autres filtres prédéfinis&nbsp;</h2>
+<div>
+<ul>
+<li>Uppercase/lowercase</li>
+<li>Date:"format" pour formater une date</li>
+<li>Number : pour les arrondis</li>
+<li>Currency pour les prix et leur affichage</li>
+<li>LimitTo pour n'afficher qu'un nombre limité d'items</li>
+</ul>
+<div style="text-align: left;">
+    <br>
+</div>
+</div>
+<div style="text-align: left;">Et, avec la possibilité de les combiner, il devient très rapide de formater ses données :&nbsp;</div>
+<div style="text-align: left;">
+<br>
+</div>
+<div style="text-align: left;">
+
+Recherche : <input type='text' ng-model='recherche' />
+<table ng-controller='filterCtrl'>
+	<tr><th>Nom</th><th>Age</th><th>Mail</th><th>Prix</th><th>Date</th></tr>
+	<tr ng-repeat='pers in annuaire | filter:recherche'>
+		<td>{{pers.nom|uppercase}}</td><td>{{pers.age}}</td><td>{{pers.mail}}</td><td>{{pers.prix|currency}}</td><td>{{pers.date|date:'short'}}</td>
+	</tr>
+</table>
+</div>
+<div>
+<br>
+</div>
+</section>
+</section>
+<section>
+    <section>
+        <h2>Ajax, pas d'amsterdam</h2>
+<div>
+        <br>
+        </div>
+<div>Nous avons vu comment afficher, modifier, formater ou filtrer des données dans notre application, mais pas encore comment les récupérer.&nbsp;</div>
+<div>La plupart des applications que nous allons chercher à construire auront en effet besoin d'aller récupérer ces informations sur un serveur distant par exemple. Les développeurs y ont pensé (heureusement), et proposent plusieurs services, afin de pouvoir envoyer des requêtes AJAX facilement. Tous ces services dérivent du composant $httpProvider, et ne sont pour la plupart que des raccourcis à ce service</div>
+    </section>
+    <section>
+        <h2>Digression : RESTful</h2>
+<div>
+        <br>
+        </div>
+<div class="absolute-element" style="position: absolute; width: 936px; height: 184px; z-index: 4; left: 13px; top: 128px;">AngularJS a beaucoup été pensé autour de la récupération d'informations à partir d'un serveur suivant l'architecture RESTful, qui se base sur les URI et les messages du protocole HTTP</div>
+<div class="absolute-element" style="position: absolute; width: 936px; height: 184px; z-index: 4; left: -6px; top: 307px;">AngularJS propose un service $resource, basé sur $httpProvider, qui tire pleinement parti de cette architecture, en proposant des raccourcis d'accès via des fonctions save(), get() etc...</div>
+<div class="absolute-element" style="position: absolute; width: 936px; height: 138px; z-index: 4; left: 19px; top: 497px;">C'est le niveau d'abstraction le plus haut proposé par AngularJS. Pour un accès à d'autres architectures, il sera nécessaire de passer par le service $http de base</div>
+    </section>
+    <section>
+        <h2>$http</h2>
+<div>
+        <br>
+    </div>
+<div>Heureusement, $http est d'une utilisation simple, et assez classique, proposant une syntaxe très proche de celle qu'on pourrait trouver sur jQuery</div>
+<div>Plusieurs méthodes sont disponibles de base, permettant de faire des get() et post() de manière aisée.</div>
+<div>Ces méthodes possèdent deux callback, permettant de gérer les actions à faire en cas de succès et en cas d'erreur.</div>
+<div style="width: 961px; height: 73px; max-height: none; max-width: none; position: absolute; z-index: 4; left: 0px; top: 556px;" class="absolute-element">
+<pre><code>$http.get('/someUrl').success(successCallback).error(errorCallback); </code></pre>
+</div>
+</section>
+<section>
+    <h2>Encore plus loin !</h2>
+<div>
+    <br>
+    </div>
+<div>Il est bien entendu possible de paramétrer encore plus finement ses requêtes, afin de préciser la méthode, les données, les headers etc...</div>
+<div>L'objet $http permet à la fois un paramétrage très fin, mais possède beaucoup de raccourcis d'accès, tout étant expliqué sur la documentation :&nbsp;</div>
+<div>
+<a href="http://docs.angularjs.org/api/ng.%24http">http://docs.angularjs.org/api/ng.$http</a>
+    <br>
+</div>
+</section>
+</section>
+<section>
+    <section>
+        <h2>Comment on s'en sert ?</h2>
+<div>
+        <br>
+        </div>
+<div>Pour comprendre comment se servir de $http, il est nécessaire de faire une petite parenthèse sur la Dependency Injection (DI dans la suite)</div>
+<div>C'est un design-pattern (argh !) qui est assez difficile à maîtriser, mais qui se révèle assez simple dans le cas d'AngularJS</div>
+<div>En effet, AngularJS nomme la plupart de ses fonctions en les précédant d'un $. Si ce $ est présent dans un argument d'une fonction, il est fort probable que ce soit une DI</div>
+    </section>
+    <section>
+        <h2>Keep digging !</h2>
+<div>
+        <br>
+    </div>
+<div>Pour prendre un exemple simple, le controller dont on parle depuis le début :&nbsp;</div>
+<div class="absolute-element" style="position: absolute; width: 936px; height: 138px; z-index: 4; left: 12px; top: 377px;">Ce que l'on écrit signifie qu'on va créer une fonction, et qu'elle va avoir besoin de dépendances, en l'occurrence le $scope</div>
+<div>
+<pre><code>function theCtrl($scope){
+blablabla...
+} </code></pre>
+</div>
+</section>
+<section>
+    <h2>Ne pas confondre !</h2>
+<div class="absolute-element" style="position: absolute; width: 919px; height: 92px; z-index: 4; left: 24px; top: 93px;">Il est parfois difficile de faire la différence entre le passage d'arguments simples et la DI</div>
+<div class="absolute-element" style="position: absolute; width: 936px; height: 92px; z-index: 4; left: -3px; top: 189px;">Typiquement, la différence visible sera l'ordre des paramètres. Dans une fonction classique, sans DI</div>
+<div class="absolute-element" style="position: absolute; width: 729px; height: 86px; z-index: 4; left: 18px; top: 276px; max-height: none; max-width: none;">
+<pre><code>function test(arg1, arg2){} </code></pre>
+</div>
+<div class="absolute-element" style="position: absolute; width: 936px; height: 92px; z-index: 4; left: 23px; top: 326px;">l'ordre des arguments a une importance, les inverser inversera aussi leur valeur au sein de la fonction</div>
+<div class="absolute-element" style="position: absolute; width: 936px; height: 92px; z-index: 4; left: 24px; top: 414px;">Lorsqu'il s'agit de DI, l'ordre n'a aucune importance, ainsi la fonction</div>
+<pre class="absolute-element" style="position: absolute; width: 870px; height: 33px; z-index: 4; left: 48px; top: 481px;">
+<code>&nbsp;testCtrl($scope, $http){} </code>
+</pre>
+<div class="absolute-element" style="position: absolute; width: 453px; height: 46px; z-index: 4; left: 258px; top: 544px;">&nbsp;est équivalente à la fonction</div>
+<div class="absolute-element" style="position: absolute; width: 741px; height: 72px; z-index: 4; left: 14px; top: 595px; max-height: none; max-width: none;">
+<pre><code>&nbsp;testCtrl($http, $scope){}</code></pre>
+</div>
+</section>
+</section>
+<section>
+    <section>
+        <h2>What else ?</h2>
+<div>
+<span>Depuis le début, on a présenté le framework comme une extension du langage html, mais pour le moment, on n'a utilisé que certains attributs supplémentaires. AngularJS propose bien plus que ça grâce aux directives.</span>
+        <br>
+</div>
+<div>Les directives, ce sont certainement les éléments les plus puissants proposés par le framework.</div>
+<div>D'un point de vue conceptuel, AngularJs est considéré comme un langage déclaratif, a contrario de jQuery qui se veut impératif. Le différence vient du fait qu'avec jQuery, on modifie le DOM après sa génération, alors qu'AngularJS le fait au moment de la création</div>
+    </section>
+    <section>
+        <h2>Les directives</h2>
+<div>Les directives sont un peu la manière d'AngularJS de modifier le DOM, justement en proposant des tags supplémentaires qui manqueraient au HTML, une manière de lui apprendre de nouvelles compétences</div>
+<div>Beaucoup des fonctionnalités de bases dont on a parlé depuis le début de la présentation sont déclarées comme des directives pour AngularJS, comme ng-bind, qui se cache derrière la notation {{}}. &nbsp;</div>
+<div>La puissance des directives ne réside cependant pas dans la partie existante du framework, mais dans la possibilité d'en créer soi-même</div>
+    </section>
+    <section>
+        <h2>Version courte</h2>
+<div>La version la plus courte d'une directive consiste uniquement à retourner la fonction de link, qui prend 3 paramètres, le scope courant, l'élément sur lequel on va s'appliquer et les attributs potentiels qui auront été passés. C'est très utile pour appliquer une fonction jQuery sur un élément par exemple (même si ce n'est pas très recommandé par AngularJS de faire ça de cette manière)</div>
+<div>
+        <br>
+    </div>
+</section>
+<section>
+    <h2>Comment les définir ?</h2>
+<div>Tout d'abord, il va falloir remonter bien plus haut, et donner un nom à notre ng-app, permettant de lui ajouter des directives (c'est aussi nécessaire pour ajouter des filtres personnalisées, et c'est mieux pour faire des modules réutilisables)</div>
+<div>Donc : &lt;html ng-app='testApp'&gt;</div>
+<div>ensuite, la partie javascript, un peu plus longue :&nbsp;</div>
+<div>
+<pre><code>var testApp=angular.module('testApp',[])
+testApp.directive('myDir', function(){
+  return function(scope, element, attr){
+  element.uneFctQuelconque(attr);
+ };&nbsp;</code><code>}) </code></pre>
+</div>
+</section>
+<section>
+    <h2>
+        <br>
+        </h2>
+<div>Il suffit ensuite de mettre cette directive dans un tag html pour lui appliquer la fonction quelconque précédente :&nbsp;</div>
+<div><pre><code>&lt;html ng-app='testApp'&gt;
+...
+&lt;span my-dir='testAttr'&gt;&lt;/span&gt;
+...
+&lt;/html&gt;</code></pre></div>
+    </section>
+</section>
+<section>
+    <section>
+        <h2>To infinity ... and beyond!</h2>
+<div class="absolute-element" style="position: absolute; width: 938px; height: 92px; z-index: 4; left: 10px; top: 118px;">Les directives permettent bien plus que ça, et possèdent un nombre conséquent de propriétés :&nbsp;</div>
+<div style="width: 971px; height: 450px; max-height: none; max-width: none; position: absolute; z-index: 4; left: -32px; top: 212px;" class="absolute-element">
+<pre><code><font style="font-size: 18px;">{ &nbsp; priority: 0,
+&nbsp; &nbsp; template: '',
+&nbsp; &nbsp; templateUrl: 'directive.html',
+&nbsp; &nbsp; replace: false,
+&nbsp; &nbsp; transclude: false,
+&nbsp; &nbsp; restrict: 'A',
+&nbsp; &nbsp; scope: false,
+&nbsp; &nbsp; controller: ["$scope", ...., "otherInjectables",
+&nbsp; &nbsp; &nbsp; function($scope, ...., otherInjectables) { ... }],
+&nbsp; &nbsp; compile: function compile(tElement, tAttrs, transclude) {
+&nbsp; &nbsp; &nbsp; return {
+&nbsp; &nbsp; &nbsp; &nbsp; pre: function preLink(scope, iElement, iAttrs, controller) { ... },
+&nbsp; &nbsp; &nbsp; &nbsp; post: function postLink(scope, iElement, iAttrs, controller) { ... }
+&nbsp; &nbsp; &nbsp; }
+&nbsp; &nbsp; },
+&nbsp; &nbsp; link: function postLink(scope, iElement, iAttrs) { ... }
+&nbsp; };<br></font></code>    </pre>
+</div>
+</section>
+<section>
+    <h2>Priority</h2>
+<div>
+    <br>
+    </div>
+<div>Comme son nom l'indique, permet de donner un ordre de priorité pour les directives. AngularJS va en effet, pour chaque élément, trouver toutes les directives associées, et les appliquer dans l'ordre, permettant par exemple de faire des tests sur le résultat d'un directive précédente</div>
+</section>
+<section>
+    <h2>Template(Url)?</h2>
+<div>C'est ce qui va remplacer la directive dans le code HTML, mais surtout c'est ce qui sera lié au $scope de la directive, pouvant ainsi récupérer des données définies dans ce $scope (si aucun n'est défini, ce sera le $rootScope par défaut)</div>
+<div>templateUrl permet de charger le template à partir d'un fichier externe, permettant de ne pas exagérément encombrer le code de la directive</div>
+<div>templateUrl permet aussi, à défaut d'un fichier externe, de charger un template défini dans une balise script de cette manière :&nbsp;</div>
+<div>
+<pre><code> &lt;script type='text/ng-template' id='template.html'&gt;&lt;/script&gt;</code></pre>
+</div>
+</section>
+<section>
+    <h2>Replace</h2>
+<div>Permet de définir si le template va effectivement remplacer tout le contenu existant (le tag, la directive etc...) ou si le template va uniquement s'insérer dans le tag où est définie la directive</div>
+<div>Le code suivant&nbsp;</div>
+<div>
+<pre><code><mydir>&lt;myDir&gt;coucou</mydir> &lt;/mydir&gt;</code></pre>
+</div>
+<div>donnera sans replace</div>
+<div>
+<pre><code><span style="color: rgb(238, 238, 238); font-style: normal; font-variant: normal; text-align: center; white-space: normal; background-color: rgba(0, 0, 0, 0.098);"><font style="font-size: 24px;">&lt;myDir&gt;contenu du template&lt;/myDir&gt;</font></span><br></code></pre>
+</div>
+<div>et avec replace&nbsp;</div>
+<div>
+<pre><code>contenu du template </code></pre>
+</div>
+</section>
+<section>
+<h2>Transclude</h2>
+<div>Transclude, par son nom barbare, permet uniquement de récupérer ou nom les données présentes dans la directive, pour les réafficher.&nbsp;<span style="text-align: left;">Le template peut afficher ce contenu à n'importe quel endroit avec ng-transclude</span>
+</div>
+<div>Par exemple, en utilisant transclude, le code</div>
+<pre><code><mydir>&lt;myDir&gt;coucou</mydir> &lt;/myDir&gt;</code></pre>
+<div>pourra se transformer en&nbsp;</div>
+<pre><code><mydir>&lt;myDir&gt;template .... coucou</mydir> &lt;/myDir&gt;</code></pre>
+</section>
+<section>
+    <h2>Restrict</h2>
+<div>Afin de rester compatible avec tous les navigateurs, toutes leurs versions ainsi que les diverses version d'HTML, angular propose 4 manière de déclarer des directives dans le code HTML</div>
+<div>
+<ul>
+<li>En tant qu'élement &nbsp;(E): &lt;myDir&gt;...</li>
+<li>En tant qu'attribut (A): &lt;span myDir&gt;...</li>
+<li>En tant que classe (C): &lt;span class='myDir'&gt;</li>
+<li>En tant que commentaire (M):&nbsp;&lt;!-- directive: my-dir --&gt;</li>
+</ul>
+<div style="text-align: left;">
+<span>Restrict permet de limiter à certains type de déclarations l'application de la directive. Par défaut, si rien n'est spécifié, les directives sont restreintes à des attributs</span>
+    <br>
+</div>
+</div>
+</section>
+<section>
+    <h2>Scope</h2>
+<div>Le scope permet à la directive de créer son propre scope isolé ou non. Elle peut prendre 3 valeurs :&nbsp;</div>
+<div>
+<ul>
+<li>false : ne crée aucun scope, et utilise le $rootScope</li>
+<li>true : crée un scope qui hérite du scope parent</li>
+<li>isolate : crée un scope qui a accès au scope parent mais ne peut hériter que de certains attributs</li>
+</ul>
+<div style="text-align: left;">Dans le cas d'un scope isolé, les attributs accessible peuvent être passés par valeur, peuvent créer une référence sur l'objet du scope parent (pour en modifier des valeurs) ou peuvent contenir des fonctions, qui seront exécutées dans le cadre du scope courant</div>
+</div>
+</section>
+<section>
+    <h2>Controller</h2>
+<div>Permet tout simplement d'associer un controller à la directive, qui pourra bien entendu gérer des données et des comportements particuliers. Le petit plus en le déclarant ici permet d'utiliser le mot clé this à la place du $scope, ce qui permet d'injecter le controller dans d'autres directives, et donc de proposer des accesseurs à des variables, par exemple</div>
+<div>Pour cela, il faudra utiliser la propriété "require" dans les autres directives</div>
+</section>
+<section>
+    <h2>Require</h2>
+<div>Permet de définir quels autres controllers seront injectés dans la directive courante. Permet d'aller chercher aussi dans les directives d'éléments parents, et pas seulement sur l'élément où s'applique la directive</div>
+</section>
+<section>
+    <h2>Compile/Link</h2>
+<div class="absolute-element" style="position: absolute; width: 936px; height: 184px; z-index: 4; left: 12px; top: 101px;">La fonction de link permet d'associer le $scope (donc aussi le modèle) au DOM généré par la directive, c'est dans cette fonction que pourront être ajoutés des données au scope, ou créer des fonctions comportementales.</div>
+<div class="absolute-element" style="position: absolute; width: 936px; height: 322px; z-index: 4; left: 10px; top: 308px;">La fonction compile, elle, est surtout là pour les performances, et va générer une fonction de link (donc on n'utilise qu'une seule des deux). Ce sera très utile dans le cas d'une directive appelée lors de l'affichage d'une liste, permettant de compiler les éléments tous ensemble une première fois, puis une fonction de link qui va les lier au DOM un par un</div>
+</section>
+</section>
+<section>
+    <section>
+        <h2>The end !</h2>
+<div>(enfin)</div>
+<div>
+        <br>
+    </div>
+<div>Il reste encore beaucoup de fonctionnalités à explorer, toutes plus ou moins bien expliquées dans la documentation, cette présentation permet cependant de bien voir les bases afin de commencer sereinement à programmer avec AngularJS</div>
+<div>
+    <br>
+</div>
+<div>
+<br>
+</div>
+</section>
+<section>
+    <h2 class="absolute-element" style="position: absolute; width: 382px; height: 68px; z-index: 4; left: 275px; top: 310px;">Any Questions ?</h2>
+</section>
+</section>
+</div>
+
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js'></script>
+<script>
+var prezApp=angular.module('prezApp',[]);
+</script>
+	</body>
+</html>
