@@ -1,0 +1,25 @@
+{
+  "name": "aNiceClient",
+  "version": "0.59.12",
+  "description": "t411 private download client",
+  "main": "niceClient.js",
+  "dependencies": {
+    "events": "~0.5.0",
+    "express": "~3.4.0",
+    "passport": "~0.2.0",
+    "request": "~2.27.0",
+    "passport-local": "~1.0.0",
+    "crypto": "0.0.3",
+    "jade": "~1.3.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "t411",
+    "torrent"
+  ],
+  "author": "NoNoZeBeSt",
+  "license": "BSD"
+}

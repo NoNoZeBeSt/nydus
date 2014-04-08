@@ -1,0 +1,37 @@
+doctype html
+html(lang="en",ng-app="ndm")
+  head
+    title= "Nydus Download Manager"
+    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js')
+    link(rel='stylesheet', href='/stylesheets/ndm.css')
+    script(src='/scripts/ndm.js')
+  body
+    h1 Welcome to NDM
+    #searchdiv(ng-controller='searchHandler')
+      form(name='searchForm')
+        input(type='text',name='data',placeholder='Search',ng-model='search.name',enter-listener)
+        input(type='button',name='submit',ng-click='searchIt(search)',value='Search')
+        input(type='button',name='top100',ng-click='getTop("100")',value='Top 100')
+        input(type='button',name='topMonth',ng-click='getTop("month")',value='Top Month')
+        input(type='button',name='topWeek',ng-click='getTop("week")',value='Top Week')
+        input(type='button',name='topToday',ng-click='getTop("today")',value='Top Today')
+      table(ng-show='result')
+        tr
+          th Name
+          th Seeders
+          th Size
+          th Download
+        tr(ng-repeat='res in result.torrents')
+          td
+            {{res.name}}
+          td
+            {{res.seeders}}
+          td
+            {{res.size|toSize}}
+          td
+            a(ng-click='downloadIt(res)', class='dlButton') Download
+      h2(ng-show='downloaded.length>0') Already added : 
+      p
+        ul
+          li(ng-repeat='item in downloaded')
+            {{item.name}}
