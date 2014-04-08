@@ -21,7 +21,7 @@ html(lang="en",ng-app="ndm")
           th Seeders
           th Size
           th Download
-        tr(ng-repeat='res in result.torrents')
+        tr(ng-repeat='res in result.torrents|orderBy:theOrderFunction:reverse')
           td
             {{res.name}}
           td

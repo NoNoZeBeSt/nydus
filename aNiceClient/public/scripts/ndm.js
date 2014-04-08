@@ -35,6 +35,14 @@ ndm.filter('toSize',function(){
 ndm.controller('searchHandler', ['$scope','TalkToMyNode',function($scope, TalkToMyNode){
 	$scope.downloaded=[];
 	$scope.result={};
+	var numOnly=/^[0-9]+$/;
+	$scope.reverse=true;
+	$scope.theOrderFunction=function(val){
+		if(numOnly.test(val.seeders))
+			return parseInt(val.seeders);
+		else
+			return val.seeders
+	} 
 	TalkToMyNode.categories().success(function(data){
 		console.log(data);
 		$scope.categories=data;
