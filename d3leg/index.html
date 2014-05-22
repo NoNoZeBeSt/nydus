@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="d3leg">
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+<script src='d3leg.js'></script><script src="http://us.battle.net/d3/static/js/tooltips.js"></script><link rel="stylesheet" href="d3leg.css">
+</head>
+<body ng-controller='d3l'>
+<span class='disclaimer'>
+All the data is from <a href='http://diablo.incgamers.com/forums/showthread.php?858143-Legendary-Drop-Rates-Data-Torment-Drop'>here</a>
+</span>
+	<div id='menu' ng-if='lang=="fr"'>			<span class='menuItem' ng-repeat='type in types'><input type='button' ng-click='search(type.file, type.name_fr)' value='{{type.name_fr}}' /></span>
+			<hr/>
+			<span class='menuSetItem' ng-repeat='set in sets'><input type='button' ng-click='search(set.file, set.name_fr)' value='{{set.name_fr}} ({{set.name}})' ng-class="set.class" /></span>
+			<hr/>
+			<input type='text' placeholder='Filter' ng-model='search.filter'/>	</div>
+	<div id='menu' ng-if='lang=="en"'>
+			<span class='menuItem' ng-repeat='type in types'><input type='button' ng-click='search(type.file, type.name)' value='{{type.name}}' /></span>
+			<hr/>
+			<span class='menuSetItem' ng-repeat='set in sets'><input type='button' ng-click='search(set.file, set.name)' value='{{set.name}}' ng-class="set.class" /></span>
+			<hr/>
+			<input type='text' placeholder='Filter' ng-model='search.filter'/>
+	</div>	<div id='content'>		<table>
+		<caption ng-show='title!=""'>{{title}}</caption>		<tr ng-show='items.length>0'>		<th>Name</th>		<th>Torment-only</th>		<th>Demon Hunter</th>		<th>Barbarian</th>		<th>Wizard</th>		<th>Witch Doctor</th>		<th>Monk</th>		<th>Crusader</th>		</tr>		<tr ng-repeat='item in items | filter:search.filter'>			<td><a ng-href='{{getItemUrl(item.name)}}'>{{item.name}}</a></td>			<td>{{item.torment}}</td>			<td ng-class='getClass(item.dh)'>{{item.dh}}</td>			<td ng-class='getClass(item.barb)'>{{item.barb}}</td>			<td ng-class='getClass(item.wiz)'>{{item.wiz}}</td>			<td ng-class='getClass(item.wd)'>{{item.wd}}</td>			<td ng-class='getClass(item.monk)'>{{item.monk}}</td>			<td ng-class='getClass(item.crus)'>{{item.crus}}</td>
+			<td ng-if='False'><input type='button' value='export item' ng-click='exports(item)' /></td>		</tr>		</table>	</div>
+	<div id='exp'>
+		<div ng-repeat='ex in exps'>
+			{{ex}}
+		</div>
+	</div>
+	<div id='langChg'>
+		<span ng-class='{"active": lang=="fr"}' ng-click='lang="fr"'>fr</span>
+		<span ng-class='{"active": lang=="en"}' ng-click='lang="en"'>en</span>
+	</div>
+</body>
+</html>
