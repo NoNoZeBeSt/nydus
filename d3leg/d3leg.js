@@ -1,4 +1,3 @@
-/*NNZBST*/
 var d3leg=angular.module('d3leg',[]);
 var allFiles=["1H_mighty_weapon","1H_spear","2H_axe","2H_flail","2H_mace","2H_mighty_weapon","2H_sword","axe","belt","boots","bow","bracer","ceremonial_knife","chest","cloak","crossbow","crusader_shield","daggers","daibo","enchantress_focus","fist_weapon","flail","glove","hand_crossbow","helm","mace","mighty_belt","mojo","necklace","orb","pant","pauldron","polearm","potion","quiver","ring","scoundrel_token","shield","spirit_stone","staff","sword","templar_relic","voodoo_mask","wand","wizard_hat","allItems","immortal_kings_call","vyrs_amazing_arcana","raiment_of_the_jade_harvester","embodiment_of_the_marauder","armor_of_akkhan","the_legacy_of_raekor","helltooth_harness","might_of_the_earth","raiment_of_a_thousand_storms","istvans_paired_blades","the_shadows_mantle","firebirds_finery","monkey_kings_garb","thorns_of_the_invoker","bastions_of_will"];
 d3leg.controller('d3l', ['$scope', 'GetJSON', function($scope, GetJSON){	$scope.types=[	{"file":"1H_mighty_weapon","name":"1H mighty weapon", "name_fr":"Arme puissante 1M"},
@@ -66,6 +65,7 @@ d3leg.controller('d3l', ['$scope', 'GetJSON', function($scope, GetJSON){	$scope
 		var pv=new RegExp(";","g");
 		var fixer={
 			"burst-of-wrath": "burst-of-wrath-322lv2",
+			"akanesh-the-herald-of-righteousness": "akanesh-the-herald-of-righteousness-2n8tPc",
 			"soulsmasher": "soulsmasher-6EmZ3",
 			"insatiable-belt": "insatiable-belt-1Yuo9W",
 			"boots-of-disregard": "boots-of-disregard-29WPmn",
