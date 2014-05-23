@@ -63,7 +63,35 @@ d3leg.controller('d3l', ['$scope', 'GetJSON', function($scope, GetJSON){	$scope
 	{"file":"thorns_of_the_invoker","name": "Thorns of the Invoker","name_fr": "Les Epines de l'invocateur","class":""},
 	{"file":"bastions_of_will","name": "Bastions of Will","name_fr": "Redoutes de la volont\351","class":""}];	$scope.getItemUrl=function(name){		var ur=($scope.lang=="fr")?"http://eu.battle.net/d3/fr/item/":"http://us.battle.net/d3/en/item/";		var space=new RegExp(" ","g");		var apo=new RegExp("'","g");
 		var star=new RegExp("[*][ ]+","g");
-		var pv=new RegExp(";","g");		name=name.replace(star,"").replace(space,'-').replace(apo,"").replace(pv,"").toLowerCase();		return ur+name;	}
+		var pv=new RegExp(";","g");
+		var fixer={
+			"burst-of-wrath": "burst-of-wrath-322lv2",
+			"soulsmasher": "soulsmasher-6EmZ3",
+			"insatiable-belt": "insatiable-belt-1Yuo9W",
+			"boots-of-disregard": "boots-of-disregard-29WPmn",
+			"illusory-boots": "illusory-boots-29WYI0",
+			"sanguinary-vambraces": "sanguinary-vambraces-1385JU",
+			"cloak-of-deception": "cloak-of-deception-hEilc",
+			"salvation": "salvation-TxMPT",
+			"envious-blade": "envious-blade-3FoG39",
+			"gloves-of-worship": "gloves-of-worship-FA37P",
+			"helltrapper": "helltrapper-3tfdaj",
+			"prides-fall": "prides-fall-pgClp",
+			"mask-of-jeram": "mask-of-jeram-3OrCkW",
+			"mask-of-jeram-(set)": "mask-of-jeram-2vRegl",
+			"mad-monarchs-scepter": "mad-monarchs-scepter-2F34bH",
+			"sorrowful-countenance": "sorrowful-countenance-3GeUmy",
+			"golden-gorget-of-leoric": "golden-gorget-of-leoric-1I0CCL",
+			"overwhelming-desire": "overwhelming-desire-1I0LYo",
+			"deaths-bargain": "deaths-bargain-3STVps",
+			"pauldrons-of-the-skeleton-king": "pauldrons-of-the-skeleton-king-2AGH0r3",
+			"ring-of-royal-grandeur": "ring-of-royal-grandeur-3qRFop",
+			"avarice-band": "avarice-band-3qROK2",
+			"pandemonium-loop": "pandemonium-loop-3qRY5F",
+			"covens-criterion": "covens-criterion-dzvKS"
+		}		name=name.replace(star,"").replace(space,'-').replace(apo,"").replace(pv,"").toLowerCase();
+		if(fixer[name])
+			return ur+fixer[name];		return ur+name;	}
 	$scope.lang="fr";	$scope.search=function(t, title){
 		$scope.title=title;		GetJSON.get(t).success(function(data){			$scope.items=data		}).error(function(data){			$scope.items=[];			$scope.error=true;		});	}
 	$scope.exps=[];
