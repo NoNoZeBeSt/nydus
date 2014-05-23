@@ -8,15 +8,15 @@
 <span class='disclaimer'>
 All the data is from <a href='http://diablo.incgamers.com/forums/showthread.php?858143-Legendary-Drop-Rates-Data-Torment-Drop'>here</a>
 </span>
-	<div id='menu' ng-if='lang=="fr"'>			<span class='menuItem' ng-repeat='type in types'><input type='button' ng-click='search(type.file, type.name_fr)' value='{{type.name_fr}}' /></span>
+	<div id='menu' ng-if='lang=="fr"'>			<span class='menuItem' ng-class='{selected: type.name_fr==title}' ng-repeat='type in types'><input type='button' ng-click='search(type.file, type.name_fr)' value='{{type.name_fr}}' /></span>
 			<hr/>
-			<span class='menuSetItem' ng-repeat='set in sets'><input type='button' ng-click='search(set.file, set.name_fr)' value='{{set.name_fr}} ({{set.name}})' ng-class="set.class" /></span>
+			<span class='menuSetItem' ng-class='{selected: set.name_fr==title}' ng-repeat='set in sets'><input type='button' ng-click='search(set.file, set.name_fr)' value='{{set.name_fr}} ({{set.name}})' ng-class="set.class" /></span>
 			<hr/>
 			<input type='text' placeholder='Filter' ng-model='search.filter'/>	</div>
 	<div id='menu' ng-if='lang=="en"'>
-			<span class='menuItem' ng-repeat='type in types'><input type='button' ng-click='search(type.file, type.name)' value='{{type.name}}' /></span>
+			<span class='menuItem' ng-class='{selected: type.name==title}' ng-repeat='type in types'><input type='button' ng-click='search(type.file, type.name)' value='{{type.name}}' /></span>
 			<hr/>
-			<span class='menuSetItem' ng-repeat='set in sets'><input type='button' ng-click='search(set.file, set.name)' value='{{set.name}}' ng-class="set.class" /></span>
+			<span class='menuSetItem' ng-class='{selected: set.name==title}' ng-repeat='set in sets'><input type='button' ng-click='search(set.file, set.name)' value='{{set.name}}' ng-class="set.class" /></span>
 			<hr/>
 			<input type='text' placeholder='Filter' ng-model='search.filter'/>
 	</div>	<div id='content'>		<table>

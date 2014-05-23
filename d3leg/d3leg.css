@@ -2,6 +2,9 @@ body{
 	/*background-color:black;
 	color: white;*/
 }
+input{
+	outline: none
+}
 #exp{
 	position:absolute;
 	bottom:5px;
@@ -35,6 +38,9 @@ caption{
 	padding:0;
 	margin:auto auto;
 }
+.menuItem.selected input{
+	background-color:white;
+}
 .menuItem input{
 	border-radius:5px;
 	margin:auto auto;
@@ -48,6 +54,9 @@ caption{
 	width:400px;
 	padding:0;
 	margin:auto auto;
+}
+.menuSetItem.selected input{
+	background-color:white;
 }
 .menuSetItem input{
 	border-radius:5px;
